@@ -2,10 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\Collaborator;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CollaboratorFactory extends Factory
 {
+    protected $model = Collaborator::class;
+
     public function definition(): array
     {
         return [

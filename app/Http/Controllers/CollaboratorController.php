@@ -49,7 +49,7 @@ class CollaboratorController extends Controller
         return redirect()->route('dashboard')
             ->with('success', 'Collaborator updated successfully.');
     }
-
+    
 
     public function destroy(Collaborator $collaborator)
     {

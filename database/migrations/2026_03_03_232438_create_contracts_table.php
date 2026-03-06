@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Ejecuta la migración
+     */
     public function up(): void
     {
         Schema::create('contracts', function (Blueprint $table) {
@@ -18,5 +21,13 @@ return new class extends Migration
             $table->foreignId('collaborator_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
+    }
+
+    /**
+     * Revierte la migración
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('contracts');
     }
 };

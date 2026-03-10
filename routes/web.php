@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CollaboratorController;
 use App\Http\Controllers\ContractController;
 use App\Http\Controllers\ContractExtensionController;
+use App\Http\Controllers\ContractTerminationController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -26,6 +27,8 @@ Route::middleware(['auth'])->group(function () {
 
     // Ruta para crear prórrogas
     Route::post('/contract-extensions', [ContractExtensionController::class, 'store']);
+
+    Route::post('/contract-terminations', [ContractTerminationController::class, 'store']);
 
 });
 

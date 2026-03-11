@@ -1,66 +1,199 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistema de Gestión de Colaboradores y Contratos
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este proyecto es una aplicación web desarrollada con Laravel que permite gestionar colaboradores, contratos, prórrogas y terminaciones anticipadas para **Tech Solutions SAS**.
 
-## About Laravel
+El sistema se enfoca en la lógica de negocio del backend, sin una interfaz gráfica de usuario (GUI), y sigue buenas prácticas como TDD (Test Driven Development) y control de versiones con GitFlow.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tecnologías utilizadas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+El proyecto fue desarrollado utilizando:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+*   PHP
+*   Laravel 11
+*   MySQL 8.0+
+*   PHPUnit
+*   `spatie/laravel-permission` (Roles y Permisos)
 
-## Learning Laravel
+## Funcionalidades del sistema
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Autenticación de usuarios
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+El sistema incluirá control de acceso basado en roles a nivel de API.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Módulo de Colaboradores
 
-## Laravel Sponsors
+Permite gestionar los perfiles de los colaboradores en la organización.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**Funciones disponibles:**
 
-### Premium Partners
+*   Crear colaboradores
+*   Listar colaboradores
+*   Actualizar colaboradores
+*   Desactivar colaboradores
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Módulo de Contratos
 
-## Contributing
+Permite gestionar contratos asociados a los colaboradores.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**Funciones disponibles:**
 
-## Code of Conduct
+*   Crear contratos (Fijo, Indefinido, Prestación de Servicios)
+*   Actualizar contratos
+*   Terminar contratos
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Módulo de Prórrogas de Contrato
 
-## Security Vulnerabilities
+Permite extender contratos existentes.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**Tipos de prórroga:**
 
-## License
+*   Prórroga de tiempo
+*   Prórroga de valor
+*   Prórroga de tiempo y valor (Ambos)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Reglas del sistema:**
+
+*   Si la prórroga incluye tiempo, se actualiza la fecha final del contrato.
+*   No se pueden crear prórrogas para contratos finalizados o terminados.
+
+### Módulo de Terminación Anticipada
+
+Permite finalizar contratos antes de su fecha de finalización.
+
+**Funciones:**
+
+*   Registrar terminación anticipada
+*   Guardar motivo de terminación
+*   Guardar fecha de terminación
+*   Cambiar estado del contrato a Terminado
+
+**Reglas del sistema:**
+
+*   No se puede terminar un contrato que ya esté Terminado o Finalizado.
+
+## Requisitos del sistema
+
+Para ejecutar el proyecto necesitas tener instalado:
+
+*   PHP 8 o superior
+*   Composer
+*   MySQL 8.0+
+
+## Instalación del proyecto
+
+1.  **Clonar el repositorio**
+
+    ```bash
+    git clone https://github.com/tu-usuario/tu-repositorio.git
+    cd tu-repositorio
+    ```
+
+2.  **Instalar dependencias de PHP**
+
+    ```bash
+    composer install
+    ```
+
+3.  **Crear archivo de entorno**
+
+    ```bash
+    cp .env.example .env
+    ```
+
+4.  **Generar clave de la aplicación**
+
+    ```bash
+    php artisan key:generate
+    ```
+
+5.  **Configurar la base de datos**
+
+    Editar el archivo `.env` con tus credenciales de base de datos:
+
+    ```
+    DB_DATABASE=nombre_base_datos
+    DB_USERNAME=usuario
+    DB_PASSWORD=contraseña (si tiene)
+    ```
+
+6.  **Ejecutar migraciones**
+
+    ```bash
+    php artisan migrate
+    ```
+
+    Esto creará todas las tablas necesarias.
+
+7.  **Ejecutar seeders (opcional)**
+
+    Si el proyecto incluye seeders para poblar la base de datos con datos de ejemplo (incluyendo roles y permisos):
+
+    ```bash
+    php artisan db:seed
+    ```
+
+## Ejecutar pruebas
+
+El proyecto incluye pruebas automatizadas utilizando PHPUnit, siguiendo la metodología TDD (Test Driven Development).
+
+Actualmente el proyecto cuenta con:
+
+  * 39 pruebas automatizadas
+  * 95 assertions
+
+Todas las pruebas pasan correctamente.
+
+Para ejecutar las pruebas:
+
+```bash
+php artisan test
+```
+
+## Estructura del proyecto
+
+```
+app/
+ ├── Http/Controllers
+ │    ├── CollaboratorController
+ │    ├── ContractController
+ │    ├── ContractExtensionController
+ │    └── ContractTerminationController
+ │
+ ├── Models
+ │    ├── Collaborator
+ │    ├── Contract
+ │    ├── ContractExtension
+ │    └── ContractTermination
+
+database/
+ ├── migrations
+
+tests/
+ ├── Feature
+ │    ├── CollaboratorTest
+ │    ├── ContractTest
+ │    ├── ContractExtensionTest
+ │    └── ContractTerminationTest
+```
+
+## Rutas principales
+
+*   `POST /collaborators`
+*   `PUT /collaborators/{collaborator}`
+*   `DELETE /collaborators/{collaborator}`
+*   `POST /collaborators/{collaborator}/contracts`
+*   `PUT /contracts/{contract}`
+*   `POST /contract-extensions`
+*   `POST /contract-terminations`
+
+## Flujo de desarrollo
+
+El proyecto utiliza **GitFlow** para el control de versiones:
+
+*   `main`: Código de producción estable.
+*   `develop`: Rama principal de desarrollo.
+*   `feature/*`: Ramas para nuevas funcionalidades.
+
+## Autor
+
+**Harley Guerra** 

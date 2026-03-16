@@ -84,8 +84,8 @@ Para ejecutar el proyecto necesitas tener instalado:
 1.  **Clonar el repositorio**
 
     ```bash
-    git clone https://github.com/tu-usuario/tu-repositorio.git
-    cd tu-repositorio
+    git clone https://github.com/harleyjgb07/Proyecto_RRHH.git
+    cd Proyecto_RRHH
     ```
 
 2.  **Instalar dependencias de PHP**

@@ -2,154 +2,186 @@
 
 Este proyecto es una aplicación web desarrollada con Laravel que permite gestionar colaboradores, contratos, prórrogas y terminaciones anticipadas para **Tech Solutions SAS**.
 
-El sistema se enfoca en la lógica de negocio del backend, sin una interfaz gráfica de usuario (GUI), y sigue buenas prácticas como TDD (Test Driven Development) y control de versiones con GitFlow.
+El sistema se enfoca principalmente en la lógica de negocio del backend y sigue buenas prácticas como **TDD (Test Driven Development)** y control de versiones con **GitFlow**.
 
-## Tecnologías utilizadas
+---
+
+# Tecnologías utilizadas
 
 El proyecto fue desarrollado utilizando:
 
-*   PHP
-*   Laravel 11
-*   MySQL 8.0+
-*   PHPUnit
-*   `spatie/laravel-permission` (Roles y Permisos)
+- PHP
+- Laravel 11
+- MySQL 8.0+
+- PHPUnit
+- Node.js
+- Vite
+- `spatie/laravel-permission` (Roles y Permisos)
 
-## Funcionalidades del sistema
+---
 
-### Autenticación de usuarios
+# Funcionalidades del sistema
 
-El sistema incluirá control de acceso basado en roles a nivel de API.
+## Autenticación de usuarios
 
-### Módulo de Colaboradores
+El sistema incluye control de acceso basado en roles a nivel de API.
+
+---
+
+## Módulo de Colaboradores
 
 Permite gestionar los perfiles de los colaboradores en la organización.
 
 **Funciones disponibles:**
 
-*   Crear colaboradores
-*   Listar colaboradores
-*   Actualizar colaboradores
-*   Desactivar colaboradores
+- Crear colaboradores
+- Listar colaboradores
+- Actualizar colaboradores
+- Desactivar colaboradores
 
-### Módulo de Contratos
+---
+
+## Módulo de Contratos
 
 Permite gestionar contratos asociados a los colaboradores.
 
 **Funciones disponibles:**
 
-*   Crear contratos (Fijo, Indefinido, Prestación de Servicios)
-*   Actualizar contratos
-*   Terminar contratos
+- Crear contratos (Fijo, Indefinido, Prestación de Servicios)
+- Actualizar contratos
+- Terminar contratos
 
-### Módulo de Prórrogas de Contrato
+---
+
+## Módulo de Prórrogas de Contrato
 
 Permite extender contratos existentes.
 
 **Tipos de prórroga:**
 
-*   Prórroga de tiempo
-*   Prórroga de valor
-*   Prórroga de tiempo y valor (Ambos)
+- Prórroga de tiempo
+- Prórroga de valor
+- Prórroga de tiempo y valor (Ambos)
 
 **Reglas del sistema:**
 
-*   Si la prórroga incluye tiempo, se actualiza la fecha final del contrato.
-*   No se pueden crear prórrogas para contratos finalizados o terminados.
+- Si la prórroga incluye tiempo, se actualiza la fecha final del contrato.
+- No se pueden crear prórrogas para contratos finalizados o terminados.
 
-### Módulo de Terminación Anticipada
+---
+
+## Módulo de Terminación Anticipada
 
 Permite finalizar contratos antes de su fecha de finalización.
 
 **Funciones:**
 
-*   Registrar terminación anticipada
-*   Guardar motivo de terminación
-*   Guardar fecha de terminación
-*   Cambiar estado del contrato a Terminado
+- Registrar terminación anticipada
+- Guardar motivo de terminación
+- Guardar fecha de terminación
+- Cambiar estado del contrato a **Terminado**
 
 **Reglas del sistema:**
 
-*   No se puede terminar un contrato que ya esté Terminado o Finalizado.
+- No se puede terminar un contrato que ya esté **Terminado o Finalizado**.
 
-## Requisitos del sistema
+---
+
+# Requisitos del sistema
 
 Para ejecutar el proyecto necesitas tener instalado:
 
-*   PHP 8 o superior
-*   Composer
-*   MySQL 8.0+
+- PHP 8 o superior
+- Composer
+- MySQL 8.0+
+- Node.js 18 o superior
+- npm
 
-## Instalación del proyecto
+---
 
-1.  **Clonar el repositorio**
+# Instalación del proyecto
 
-    ```bash
-    git clone https://github.com/harleyjgb07/Proyecto_RRHH.git
-    cd Proyecto_RRHH
-    ```
+1. **Clonar el repositorio**
 
-2.  **Instalar dependencias de PHP**
+```bash
+git clone https://github.com/harleyjgb07/Proyecto_RRHH.git
+cd Proyecto_RRHH
+```
 
-    ```bash
-    composer install
-    ```
+2. **Instalar dependencias de PHP**
 
-3.  **Crear archivo de entorno**
+```bash
+composer install
+```
 
-    ```bash
-    cp .env.example .env
-    ```
+3. **Crear archivo de entorno**
 
-4.  **Generar clave de la aplicación**
+```bash
+cp .env.example .env
+```
 
-    ```bash
-    php artisan key:generate
-    ```
+4. **Generar clave de la aplicación**
 
-5.  **Configurar la base de datos**
+```bash
+php artisan key:generate
+```
 
-    Editar el archivo `.env` con tus credenciales de base de datos:
+5. **Instalar dependencias de Node**
 
-    ```
-    DB_DATABASE=nombre_base_datos
-    DB_USERNAME=usuario
-    DB_PASSWORD=contraseña (si tiene)
-    ```
+```bash
+npm.cmd install
+```
 
-6.  **Ejecutar migraciones**
+6. **Compilar los assets con Vite**
 
-    ```bash
-    php artisan migrate
-    ```
+```bash
+npm.cmd run build
+```
 
-    Esto creará todas las tablas necesarias.
+7. **Configurar la base de datos**
 
-7.  **Ejecutar seeders (opcional)**
+Editar el archivo `.env` con tus credenciales:
 
-    Si el proyecto incluye seeders para poblar la base de datos con datos de ejemplo (incluyendo roles y permisos):
+```
+DB_DATABASE=nombre_base_datos
+DB_USERNAME=usuario
+DB_PASSWORD=contraseña(si tiene)
+```
 
-    ```bash
-    php artisan db:seed
-    ```
+8. **Ejecutar migraciones**
 
-## Ejecutar pruebas
+```bash
+php artisan migrate
+```
 
-El proyecto incluye pruebas automatizadas utilizando PHPUnit, siguiendo la metodología TDD (Test Driven Development).
+9. **Ejecutar seeders (opcional)**
+
+Si el proyecto incluye seeders para poblar la base de datos con datos de ejemplo:
+
+```bash
+php artisan db:seed
+```
+
+---
+
+# Ejecutar pruebas
+
+El proyecto incluye pruebas automatizadas utilizando **PHPUnit**, siguiendo la metodología **TDD (Test Driven Development)**.
 
 Actualmente el proyecto cuenta con:
 
-  * 39 pruebas automatizadas
-  * 95 assertions
+- 39 pruebas automatizadas
+- 95 assertions
 
-Todas las pruebas pasan correctamente.
-
-Para ejecutar las pruebas:
+Para ejecutar todas las pruebas:
 
 ```bash
 php artisan test
 ```
 
-## Estructura del proyecto
+---
+
+# Estructura del proyecto
 
 ```
 app/
@@ -164,10 +196,8 @@ app/
  │    ├── Contract
  │    ├── ContractExtension
  │    └── ContractTermination
-
 database/
  ├── migrations
-
 tests/
  ├── Feature
  │    ├── CollaboratorTest
@@ -176,24 +206,32 @@ tests/
  │    └── ContractTerminationTest
 ```
 
-## Rutas principales
+---
 
-*   `POST /collaborators`
-*   `PUT /collaborators/{collaborator}`
-*   `DELETE /collaborators/{collaborator}`
-*   `POST /collaborators/{collaborator}/contracts`
-*   `PUT /contracts/{contract}`
-*   `POST /contract-extensions`
-*   `POST /contract-terminations`
+# Rutas principales
 
-## Flujo de desarrollo
+- `POST /collaborators`
+- `PUT /collaborators/{collaborator}`
+- `DELETE /collaborators/{collaborator}`
+- `POST /collaborators/{collaborator}/contracts`
+- `PUT /contracts/{contract}`
+- `POST /contract-extensions`
+- `POST /contract-terminations`
+
+---
+
+# Flujo de desarrollo
 
 El proyecto utiliza **GitFlow** para el control de versiones:
 
-*   `main`: Código de producción estable.
-*   `develop`: Rama principal de desarrollo.
-*   `feature/*`: Ramas para nuevas funcionalidades.
+- `main` → Código de producción estable
+- `develop` → Rama principal de desarrollo
+- `feature/*` → Ramas para nuevas funcionalidades
 
-## Autor
+---
 
-**Harley Guerra** 
+# Autor
+
+**Harley Guerra**
+
+
